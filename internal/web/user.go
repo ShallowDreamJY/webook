@@ -26,13 +26,13 @@ type UserClaims struct {
 
 // UserHandler 定义和用户有关的路由
 type UserHandler struct {
-	svc         *service.UserService
-	codeSvc     *service.CodeService
+	svc         service.UserService
+	codeSvc     service.CodeService
 	emailExp    *regexp.Regexp
 	passwordExp *regexp.Regexp
 }
 
-func NewUserHandler(svc *service.UserService, codeSvc *service.CodeService) *UserHandler {
+func NewUserHandler(svc service.UserService, codeSvc service.CodeService) *UserHandler {
 	emailExp := regexp.MustCompile(emailRegexPattern, regexp.None)
 	passwordExp := regexp.MustCompile(passwordRegexPattern, regexp.None)
 

@@ -15,17 +15,23 @@ var (
 	ErrUserNotFound          = repository.ErrUserNotFound
 )
 
-type UserService struct {
-	repo *repository.UserRepository
+type UserService interface {
+	SignUp(ctx context.Context, u domain.User) error
+	Login(ctx context.Context, email string, password string) (domain.User, error)
+	FindOrCreate(ctx *gin.Context, phone string) (domain.User, error)
 }
 
-func NewUserService(repo *repository.UserRepository) *UserService {
-	return &UserService{
+type userService struct {
+	repo repository.UserRepository
+}
+
+func NewUserService(repo repository.UserRepository) UserService {
+	return &userService{
 		repo: repo,
 	}
 }
 
-func (svc *UserService) SignUp(ctx context.Context, u domain.User) error {
+func (svc *userService) SignUp(ctx context.Context, u domain.User) error {
 	hash, err := bcrypt.GenerateFromPassword([]byte(u.Password), bcrypt.DefaultCost)
 	if err != nil {
 		return err
@@ -34,7 +40,7 @@ func (svc *UserService) SignUp(ctx context.Context, u domain.User) error {
 	return svc.repo.Create(ctx, u)
 }
 
-func (svc *UserService) Login(ctx context.Context, email string, password string) (domain.User, error) {
+func (svc *userService) Login(ctx context.Context, email string, password string) (domain.User, error) {
 	// 查询用户是否存在
 	u, err := svc.repo.FindByEmail(ctx, email)
 	if err == repository.ErrUserNotFound {
@@ -52,7 +58,7 @@ func (svc *UserService) Login(ctx context.Context, email string, password string
 	return u, nil
 }
 
-func (svc *UserService) FindOrCreate(ctx *gin.Context, phone string) (domain.User, error) {
+func (svc *userService) FindOrCreate(ctx *gin.Context, phone string) (domain.User, error) {
 	// 先查询该phone是否注册过用户
 	u, err := svc.repo.FindByPhone(ctx, phone)
 	// 判断是否存在该用户
