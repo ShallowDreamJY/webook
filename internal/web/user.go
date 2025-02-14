@@ -160,10 +160,7 @@ func (u *UserHandler) SignUp(ctx *gin.Context) {
 		return
 	}
 	if !ok {
-		ctx.JSON(http.StatusOK, Result{
-			Code: 5,
-			Msg:  "邮箱格式不对",
-		})
+		ctx.String(http.StatusOK, "邮箱格式不对")
 		return
 	}
 	// 校验密码格式
@@ -193,10 +190,7 @@ func (u *UserHandler) SignUp(ctx *gin.Context) {
 		Password: req.Password,
 	})
 	if err == service.ErrUserDuplicated {
-		ctx.JSON(http.StatusOK, Result{
-			Code: 5,
-			Msg:  "邮箱冲突",
-		})
+		ctx.String(http.StatusOK, "邮箱冲突")
 		return
 	}
 	if err != nil {
@@ -206,10 +200,7 @@ func (u *UserHandler) SignUp(ctx *gin.Context) {
 		})
 		return
 	}
-	ctx.JSON(http.StatusOK, Result{
-		Code: 5,
-		Msg:  "注册成功",
-	})
+	ctx.String(http.StatusOK, "注册成功")
 }
 
 func (u *UserHandler) LoginJWT(ctx *gin.Context) {
