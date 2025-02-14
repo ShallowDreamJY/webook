@@ -5,7 +5,7 @@ local code = redis.call("get",key)
 local cntKey = key..":cnt"
 local cnt = tonumber( redis.call("get",cntKey))
 
-if cnt <= 0 then
+if cnt == nil or cnt <= 0 then
     -- 说明一直出错，超过验证次数
     -- 或者已经用过了
     return -1
