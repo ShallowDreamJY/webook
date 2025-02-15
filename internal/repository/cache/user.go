@@ -25,10 +25,10 @@ type RedisUserCache struct {
 // A 用到了 B ，B 一定是接口 -》保证面向接口
 // A 用到了 B ，B 一定是 A 的字段 -》规避包变量，包方法
 // A 用到了 B ，A 绝对不初始化 B ，而是外面注入
-func NewUserCache(client redis.Cmdable, expiration time.Duration) UserCache {
+func NewUserCache(client redis.Cmdable) UserCache {
 	return &RedisUserCache{
 		client:     client,
-		expiration: expiration,
+		expiration: time.Minute * 60,
 	}
 }
 

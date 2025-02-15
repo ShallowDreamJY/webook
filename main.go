@@ -93,7 +93,7 @@ func initRedis() redis.Cmdable {
 
 func initUser(db *gorm.DB, rdb redis.Cmdable) *web.UserHandler {
 	ud := dao.NewUserDao(db)
-	uc := cache.NewUserCache(rdb, time.Minute*60)
+	uc := cache.NewUserCache(rdb)
 	repo := repository.NewUserRepository(ud, uc)
 	userSvc := service.NewUserService(repo)
 	codeCache := cache.NewCodeCache(rdb)
