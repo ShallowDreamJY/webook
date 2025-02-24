@@ -27,7 +27,7 @@ func InitMiddlewares(redisClient redis.Cmdable) []gin.HandlerFunc {
 			AllowMethods:     []string{"PUT", "PATCH", "POST", "GET"},
 			AllowHeaders:     []string{"Content-Type", "Authorization"},
 			AllowCredentials: true,
-			ExposeHeaders:    []string{"x-jwt-token"},
+			ExposeHeaders:    []string{"x-jwt-token", "x-refresh-token"},
 			AllowOriginFunc: func(origin string) bool {
 				if strings.Contains(origin, "localhost") {
 					return true
@@ -41,6 +41,7 @@ func InitMiddlewares(redisClient redis.Cmdable) []gin.HandlerFunc {
 			IgnorePaths("/users/login").
 			IgnorePaths("/users/login_sms/code/send").
 			IgnorePaths("/users/login_sms").
+			IgnorePaths("/users/refresh_token").
 			IgnorePaths("/oauth2/wechat/authurl").
 			Build(),
 		ratelimit.NewBuilder(redisClient, time.Second, 100).Build(),

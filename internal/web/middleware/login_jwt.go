@@ -34,7 +34,7 @@ func (l *LoginJWTMiddlewareBuilder) Build() gin.HandlerFunc {
 				return
 			}
 		}
-		// JWT
+		// 获取JWT
 		tokenHeader := ctx.GetHeader("Authorization")
 		if tokenHeader == "" {
 			ctx.AbortWithStatus(http.StatusUnauthorized)

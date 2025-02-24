@@ -4,6 +4,7 @@ import (
 	regexp "github.com/dlclark/regexp2"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
 	"net/http"
 	"webook/internal/domain"
 	"webook/internal/service"
@@ -32,6 +33,7 @@ func NewUserHandler(svc service.UserService, codeSvc service.CodeService) *UserH
 		codeSvc:     codeSvc,
 		emailExp:    emailExp,
 		passwordExp: passwordExp,
+		jwtHandler:  NewJwtHandler(),
 	}
 }
 
@@ -44,6 +46,26 @@ func (u *UserHandler) RegisterUserRoutes(server *gin.Engine) {
 	ug.POST("/edit", u.Edit)
 	ug.GET("/profile", u.Profile)
 	ug.GET("/logout", u.Logout)
+	ug.POST("/refresh_token", u.RefreshToken)
+}
+
+func (u *UserHandler) RefreshToken(ctx *gin.Context) {
+	refreshToken := u.ExtractToken(ctx)
+	var rt RefreshClaims
+	token, err := jwt.ParseWithClaims(refreshToken, &rt, func(token *jwt.Token) (interface{}, error) {
+		return u.rtKey, nil
+	})
+	if err != nil || !token.Valid {
+		ctx.AbortWithStatus(http.StatusUnauthorized)
+		return
+	}
+	err = u.setJWTToken(ctx, rt.Uid)
+	if err != nil {
+		ctx.AbortWithStatus(http.StatusUnauthorized)
+		return
+	}
+	ctx.JSON(http.StatusOK, Result{Msg: "刷新成功"})
+	return
 }
 
 func (u *UserHandler) LoginSMS(ctx *gin.Context) {
@@ -86,6 +108,14 @@ func (u *UserHandler) LoginSMS(ctx *gin.Context) {
 	}
 
 	err = u.setJWTToken(ctx, user.Id)
+	if err != nil {
+		ctx.JSON(http.StatusOK, Result{
+			Code: 5,
+			Msg:  "系统错误",
+		})
+	}
+
+	err = u.setRefreshToken(ctx, user.Id)
 	if err != nil {
 		ctx.JSON(http.StatusOK, Result{
 			Code: 5,
@@ -220,6 +250,11 @@ func (u *UserHandler) LoginJWT(ctx *gin.Context) {
 	//})
 	//sess.Save()
 	err = u.setJWTToken(ctx, user.Id)
+	if err != nil {
+		ctx.String(http.StatusOK, "系统错误")
+		return
+	}
+	err = u.setRefreshToken(ctx, user.Id)
 	if err != nil {
 		ctx.String(http.StatusOK, "系统错误")
 		return
