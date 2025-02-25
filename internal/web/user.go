@@ -1,11 +1,14 @@
 package web
 
 import (
+	"fmt"
 	regexp "github.com/dlclark/regexp2"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/redis/go-redis/v9"
 	"net/http"
+	"time"
 	"webook/internal/domain"
 	"webook/internal/service"
 )
@@ -21,6 +24,7 @@ type UserHandler struct {
 	codeSvc     service.CodeService
 	emailExp    *regexp.Regexp
 	passwordExp *regexp.Regexp
+	cmd         redis.Cmdable
 	jwtHandler
 }
 
@@ -49,6 +53,32 @@ func (u *UserHandler) RegisterUserRoutes(server *gin.Engine) {
 	ug.POST("/refresh_token", u.RefreshToken)
 }
 
+func (u *UserHandler) LogoutJWT(ctx *gin.Context) {
+	ctx.Header("x-jwt-token", "")
+	ctx.Header("x-refresh-token", "")
+	c, _ := ctx.Get("claims")
+	claims, ok := c.(*UserClaims)
+	if !ok {
+		ctx.JSON(http.StatusOK, Result{
+			Code: 5,
+			Msg:  "系统错误",
+		})
+		return
+	}
+	err := u.cmd.Set(ctx, fmt.Sprintf("users:ssid:%s", claims.Ssid), "", time.Hour*24*7).Err()
+	if err != nil {
+		ctx.JSON(http.StatusOK, Result{
+			Code: 5,
+			Msg:  "退出登录失败",
+		})
+		return
+	}
+	ctx.JSON(http.StatusOK, Result{
+		Code: 5,
+		Msg:  "退出登录成功",
+	})
+}
+
 func (u *UserHandler) RefreshToken(ctx *gin.Context) {
 	refreshToken := u.ExtractToken(ctx)
 	var rt RefreshClaims
@@ -59,7 +89,14 @@ func (u *UserHandler) RefreshToken(ctx *gin.Context) {
 		ctx.AbortWithStatus(http.StatusUnauthorized)
 		return
 	}
-	err = u.setJWTToken(ctx, rt.Uid)
+	// 判断是否登出
+	cnt, err := u.cmd.Exists(ctx, fmt.Sprintf("users:ssid:%s", rt.Ssid)).Result()
+	if err != nil || cnt > 0 {
+		// redis有问题，或者已经登出
+		ctx.AbortWithStatus(http.StatusUnauthorized)
+		return
+	}
+	err = u.setJWTToken(ctx, rt.Uid, rt.Ssid)
 	if err != nil {
 		ctx.AbortWithStatus(http.StatusUnauthorized)
 		return
@@ -107,20 +144,13 @@ func (u *UserHandler) LoginSMS(ctx *gin.Context) {
 		})
 	}
 
-	err = u.setJWTToken(ctx, user.Id)
+	err = u.setLoginToken(ctx, user.Id)
 	if err != nil {
 		ctx.JSON(http.StatusOK, Result{
 			Code: 5,
 			Msg:  "系统错误",
 		})
-	}
-
-	err = u.setRefreshToken(ctx, user.Id)
-	if err != nil {
-		ctx.JSON(http.StatusOK, Result{
-			Code: 5,
-			Msg:  "系统错误",
-		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, Result{
@@ -249,12 +279,7 @@ func (u *UserHandler) LoginJWT(ctx *gin.Context) {
 	//	MaxAge: 30,
 	//})
 	//sess.Save()
-	err = u.setJWTToken(ctx, user.Id)
-	if err != nil {
-		ctx.String(http.StatusOK, "系统错误")
-		return
-	}
-	err = u.setRefreshToken(ctx, user.Id)
+	err = u.setLoginToken(ctx, user.Id)
 	if err != nil {
 		ctx.String(http.StatusOK, "系统错误")
 		return

@@ -2,8 +2,10 @@ package middleware
 
 import (
 	"encoding/gob"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	jwt "github.com/golang-jwt/jwt/v5"
+	"github.com/redis/go-redis/v9"
 	"log"
 	"net/http"
 	"strings"
@@ -14,6 +16,7 @@ import (
 // LoginJWTMiddlewareBuilder JWT登录校验
 type LoginJWTMiddlewareBuilder struct {
 	paths []string
+	cmd   redis.Cmdable
 }
 
 func NewLoginJWTMiddlewareBuilder() *LoginJWTMiddlewareBuilder {
@@ -67,6 +70,14 @@ func (l *LoginJWTMiddlewareBuilder) Build() gin.HandlerFunc {
 		//	ctx.AbortWithStatus(http.StatusUnauthorized)
 		//	return
 		//}
+		// 判断是否处于登出状态
+		cnt, err := l.cmd.Exists(ctx, fmt.Sprintf("users:ssid:%s", claims.Ssid)).Result()
+		if err != nil || cnt > 0 {
+			// redis有问题，或者已经登出
+			ctx.AbortWithStatus(http.StatusUnauthorized)
+			return
+		}
+
 		claims.ExpiresAt = jwt.NewNumericDate(time.Now().Add(time.Hour * 1))
 		tokenStr, err = token.SignedString([]byte("R5iN7GRD73oWwBRLgJYJiIIei5bGahtX"))
 		if err != nil {
