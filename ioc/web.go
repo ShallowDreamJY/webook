@@ -7,25 +7,29 @@ import (
 	"strings"
 	"time"
 	"webook/internal/web"
+	ijwt "webook/internal/web/jwt"
 	"webook/internal/web/middleware"
 	"webook/pkg/ginx/middlewares/ratelimit"
 )
 
-func InitGin(mdls []gin.HandlerFunc, hdl *web.UserHandler) *gin.Engine {
+func InitGin(mdls []gin.HandlerFunc, hdl *web.UserHandler,
+	oauth2WechatHdl *web.OAuth2WechatHandler) *gin.Engine {
 	server := gin.Default()
 	server.Use(mdls...)
 	hdl.RegisterUserRoutes(server)
+	oauth2WechatHdl.RegisterRoutes(server)
 	return server
 }
 
-func InitMiddlewares(redisClient redis.Cmdable) []gin.HandlerFunc {
+func InitMiddlewares(redisClient redis.Cmdable,
+	jwtHdl ijwt.Handler) []gin.HandlerFunc {
 	return []gin.HandlerFunc{
 		cors.New(cors.Config{
 			//AllowOrigins:     []string{"https://localhost:3000"},
 			AllowMethods:     []string{"PUT", "PATCH", "POST", "GET"},
 			AllowHeaders:     []string{"Content-Type", "Authorization"},
 			AllowCredentials: true,
-			ExposeHeaders:    []string{"x-jwt-token"},
+			ExposeHeaders:    []string{"x-jwt-token", "x-refresh-token"},
 			AllowOriginFunc: func(origin string) bool {
 				if strings.Contains(origin, "localhost") {
 					return true
@@ -34,11 +38,13 @@ func InitMiddlewares(redisClient redis.Cmdable) []gin.HandlerFunc {
 			},
 			MaxAge: 12 * time.Hour,
 		}),
-		middleware.NewLoginJWTMiddlewareBuilder().
+		middleware.NewLoginJWTMiddlewareBuilder(jwtHdl).
 			IgnorePaths("/users/signup").
 			IgnorePaths("/users/login").
 			IgnorePaths("/users/login_sms/code/send").
 			IgnorePaths("/users/login_sms").
+			IgnorePaths("/users/refresh_token").
+			IgnorePaths("/oauth2/wechat/authurl").
 			Build(),
 		ratelimit.NewBuilder(redisClient, time.Second, 100).Build(),
 	}

@@ -4,20 +4,24 @@ import (
 	"encoding/gob"
 	"github.com/gin-gonic/gin"
 	jwt "github.com/golang-jwt/jwt/v5"
+	"github.com/redis/go-redis/v9"
 	"log"
 	"net/http"
-	"strings"
 	"time"
-	"webook/internal/web"
+	ijwt "webook/internal/web/jwt"
 )
 
 // LoginJWTMiddlewareBuilder JWT登录校验
 type LoginJWTMiddlewareBuilder struct {
 	paths []string
+	ijwt.Handler
+	cmd redis.Cmdable
 }
 
-func NewLoginJWTMiddlewareBuilder() *LoginJWTMiddlewareBuilder {
-	return &LoginJWTMiddlewareBuilder{}
+func NewLoginJWTMiddlewareBuilder(jwtHdl ijwt.Handler) *LoginJWTMiddlewareBuilder {
+	return &LoginJWTMiddlewareBuilder{
+		Handler: jwtHdl,
+	}
 }
 
 func (l *LoginJWTMiddlewareBuilder) IgnorePaths(path string) *LoginJWTMiddlewareBuilder {
@@ -34,19 +38,9 @@ func (l *LoginJWTMiddlewareBuilder) Build() gin.HandlerFunc {
 				return
 			}
 		}
-		// JWT
-		tokenHeader := ctx.GetHeader("Authorization")
-		if tokenHeader == "" {
-			ctx.AbortWithStatus(http.StatusUnauthorized)
-			return
-		}
-		segs := strings.SplitN(tokenHeader, " ", 2)
-		if len(segs) != 2 {
-			ctx.AbortWithStatus(http.StatusUnauthorized)
-			return
-		}
-		tokenStr := segs[1]
-		claims := &web.UserClaims{}
+		// 获取JWT
+		tokenStr := l.ExtractToken(ctx)
+		claims := &ijwt.UserClaims{}
 		// ParseWithClaims里一定要传入指针
 		token, err := jwt.ParseWithClaims(tokenStr, claims, func(token *jwt.Token) (interface{}, error) {
 			return []byte("R5iN7GRD73oWwBRLgJYJiIIei5bGahtX"), nil
@@ -67,6 +61,14 @@ func (l *LoginJWTMiddlewareBuilder) Build() gin.HandlerFunc {
 		//	ctx.AbortWithStatus(http.StatusUnauthorized)
 		//	return
 		//}
+		// 判断是否处于登出状态
+		err = l.CheckSession(ctx, claims.Ssid)
+		if err != nil {
+			// redis有问题，或者已经登出
+			ctx.AbortWithStatus(http.StatusUnauthorized)
+			return
+		}
+
 		claims.ExpiresAt = jwt.NewNumericDate(time.Now().Add(time.Hour * 1))
 		tokenStr, err = token.SignedString([]byte("R5iN7GRD73oWwBRLgJYJiIIei5bGahtX"))
 		if err != nil {

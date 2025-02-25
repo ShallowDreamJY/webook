@@ -9,7 +9,7 @@ import (
 )
 
 type Service interface {
-	Send(ctx context.Context, tplId string, args []string, numbers ...string) error
+	Send(ctx context.Context, biz string, args []string, numbers ...string) error
 }
 
 type ServiceImpl struct {
@@ -26,11 +26,11 @@ func NewServiceImpl(client *sms.Client, appId string, signaure string) Service {
 	}
 }
 
-func (s *ServiceImpl) Send(ctx context.Context, tplId string, args []string, numbers ...string) error {
+func (s *ServiceImpl) Send(ctx context.Context, biz string, args []string, numbers ...string) error {
 	req := sms.NewSendSmsRequest()
 	req.SmsSdkAppid = s.appId
 	req.Sign = s.signature
-	req.TemplateID = ekit.ToPtr[string](tplId)
+	req.TemplateID = ekit.ToPtr[string](biz)
 	req.PhoneNumberSet = s.toStringPtrSlice(numbers)
 	req.TemplateParamSet = s.toStringPtrSlice(args)
 	resp, err := s.client.SendSms(req)
