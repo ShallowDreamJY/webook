@@ -7,6 +7,7 @@ import (
 	"strings"
 	"time"
 	"webook/internal/web"
+	ijwt "webook/internal/web/jwt"
 	"webook/internal/web/middleware"
 	"webook/pkg/ginx/middlewares/ratelimit"
 )
@@ -20,7 +21,8 @@ func InitGin(mdls []gin.HandlerFunc, hdl *web.UserHandler,
 	return server
 }
 
-func InitMiddlewares(redisClient redis.Cmdable) []gin.HandlerFunc {
+func InitMiddlewares(redisClient redis.Cmdable,
+	jwtHdl ijwt.Handler) []gin.HandlerFunc {
 	return []gin.HandlerFunc{
 		cors.New(cors.Config{
 			//AllowOrigins:     []string{"https://localhost:3000"},
@@ -36,7 +38,7 @@ func InitMiddlewares(redisClient redis.Cmdable) []gin.HandlerFunc {
 			},
 			MaxAge: 12 * time.Hour,
 		}),
-		middleware.NewLoginJWTMiddlewareBuilder().
+		middleware.NewLoginJWTMiddlewareBuilder(jwtHdl).
 			IgnorePaths("/users/signup").
 			IgnorePaths("/users/login").
 			IgnorePaths("/users/login_sms/code/send").
