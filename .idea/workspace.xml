@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250221 - 微信扫码登录：基本原理实现" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file://C:/Program Files/Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="20250218-微信扫码登录实现" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2ssthUek9JB0hkcJxBHTLOms5lW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Build.go build webook.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestCacheUserRepository_FindById/缓存未命中，DB查找成功 in webook/internal/repository.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestEncrypted in webook/internal/service.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestFailoverSMSService_Send/所有短信服务商全部发送失败 in webook/internal/service/sms/failover.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestUserHandler_SignUp in webook/internal/web.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_SignUp/邮箱冲突 in webook/internal/web.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_userService_Login in webook/internal/service.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.Test_userService_Login/DB错误 in webook/internal/service.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.Test_userService_Login/密码错误 in webook/internal/service.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.Test_userService_Login/用户不存在 in webook/internal/service.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_userService_Login/登陆成功 in webook/internal/service.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GoWorkspace/webook&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GoWorkspace\webook\pkg\ratelimit" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GoWorkspace\webook\ioc" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover">
+    <configuration name="TestCacheUserRepository_FindById/缓存未命中，DB查找成功 in webook/internal/repository" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/repository" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/repository" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestCacheUserRepository_FindById\E$/^\Q缓存未命中，DB查找成功\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestFailoverSMSService_Send in webook/internal/service/sms/failover" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/service/sms/failover" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/service/sms/failover" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestFailoverSMSService_Send\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestFailoverSMSService_Send/所有短信服务商全部发送失败 in webook/internal/service/sms/failover" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/service/sms/failover" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/service/sms/failover" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestFailoverSMSService_Send\E$/^\Q所有短信服务商全部发送失败\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/repository/dao" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/repository/dao" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestGORMUserDao_Insert\E$/^\Q插入成功\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_userService_Login in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/service" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_userService_Login\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao" />
+        <item itemvalue="Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover" />
+        <item itemvalue="Go Test.TestFailoverSMSService_Send/所有短信服务商全部发送失败 in webook/internal/service/sms/failover" />
+        <item itemvalue="Go Test.TestCacheUserRepository_FindById/缓存未命中，DB查找成功 in webook/internal/repository" />
+        <item itemvalue="Go Test.Test_userService_Login in webook/internal/service" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-d297c17c1fbd-b87a2f8923ed-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-243.21565.208" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-GO-243.21565.208" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="20250211-重启webook，已经实现短信登录模块" />
+    <MESSAGE value="20250211-面向接口编程实现" />
+    <MESSAGE value="web handlder user_test,单元测试" />
+    <MESSAGE value="20250214 - 单元测试，测试service,repository" />
+    <MESSAGE value="20250218 - 第三方服务调用治理：限流和服务轮询实现" />
+    <MESSAGE value="20250221 - 微信扫码登录：基本原理实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="20250221 - 微信扫码登录：基本原理实现" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/webook$TestUserHandler_SignUp_in_webook_internal_web.out" NAME="TestUserHandler_SignUp in webook/internal/web Coverage Results" MODIFIED="1739519881571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/webook$Test_userService_Login__in_webook_internal_service.out" NAME="Test_userService_Login/登陆成功 in webook/internal/service Coverage Results" MODIFIED="1739529794058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/webook$Test_userService_Login_in_webook_internal_service.out" NAME="Test_userService_Login in webook/internal/service Coverage Results" MODIFIED="1739530444415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
