@@ -22,7 +22,7 @@ func InitWebServer() *gin.Engine {
 		dao.NewUserDao,
 
 		cache.NewUserCache,
-		cache.NewCodeCache,
+		cache.NewRedisCodeCache,
 
 		repository.NewUserRepository,
 		repository.NewCodeRepository,

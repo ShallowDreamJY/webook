@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250221 - 微信扫码登录：基本原理实现" />
+    <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250225 - go.mod文件消失了，重新提交">
+      <change afterPath="$PROJECT_DIR$/internal/repository/cache/code_local.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/cache/code.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/cache/code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/cache/lua/set_code.lua" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/cache/lua/set_code.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wire.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire_gen.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="20250218-微信扫码登录实现" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,7 +44,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -50,6 +60,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Build.go build main.go.executor&quot;: &quot;Debug&quot;,
     &quot;Go Build.go build webook.executor&quot;: &quot;Debug&quot;,
     &quot;Go Test.TestCacheUserRepository_FindById/缓存未命中，DB查找成功 in webook/internal/repository.executor&quot;: &quot;Debug&quot;,
     &quot;Go Test.TestEncrypted in webook/internal/service.executor&quot;: &quot;Run&quot;,
@@ -68,12 +79,13 @@
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;20250227-作业，本地缓存实现codeCache&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/GoWorkspace/webook&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.goide.configuration.GoProjectSettingsConfigurable&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -89,17 +101,23 @@
       <recent name="D:\GoWorkspace\webook\ioc" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover">
-    <configuration name="TestCacheUserRepository_FindById/缓存未命中，DB查找成功 in webook/internal/repository" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build webook">
+    <configuration name="go build webook" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="webook" />
-      <working_directory value="$PROJECT_DIR$/internal/repository" />
-      <root_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="webook/internal/repository" />
+      <package value="webook" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestCacheUserRepository_FindById\E$/^\Q缓存未命中，DB查找成功\E$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build webook" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
     <configuration name="TestFailoverSMSService_Send in webook/internal/service/sms/failover" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -138,25 +156,19 @@
       <pattern value="^\QTestGORMUserDao_Insert\E$/^\Q插入成功\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="Test_userService_Login in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="webook" />
-      <working_directory value="$PROJECT_DIR$/internal/service" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="webook/internal/service" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTest_userService_Login\E$" />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Go Build.go build webook" />
+      <item itemvalue="Go Test.TestFailoverSMSService_Send/所有短信服务商全部发送失败 in webook/internal/service/sms/failover" />
+      <item itemvalue="Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover" />
+      <item itemvalue="Go Test.TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao" />
+        <item itemvalue="Go Build.go build webook" />
+        <item itemvalue="Go Build.go build webook" />
         <item itemvalue="Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover" />
+        <item itemvalue="Go Test.TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao" />
         <item itemvalue="Go Test.TestFailoverSMSService_Send/所有短信服务商全部发送失败 in webook/internal/service/sms/failover" />
-        <item itemvalue="Go Test.TestCacheUserRepository_FindById/缓存未命中，DB查找成功 in webook/internal/repository" />
-        <item itemvalue="Go Test.Test_userService_Login in webook/internal/service" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +195,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="20250227-作业，本地缓存实现codeCache" />
                       </list>
                     </value>
                   </entry>
@@ -202,7 +214,8 @@
     <MESSAGE value="20250214 - 单元测试，测试service,repository" />
     <MESSAGE value="20250218 - 第三方服务调用治理：限流和服务轮询实现" />
     <MESSAGE value="20250221 - 微信扫码登录：基本原理实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="20250221 - 微信扫码登录：基本原理实现" />
+    <MESSAGE value="20250225 - go.mod文件消失了，重新提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="20250225 - go.mod文件消失了，重新提交" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
