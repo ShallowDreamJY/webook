@@ -1,7 +1,13 @@
 package main
 
+import (
+	"github.com/spf13/pflag"
+	"github.com/spf13/viper"
+)
+
 func main() {
 	//db := initDB()
+	initViper()
 	server := InitWebServer()
 	//rdb := initRedis()
 	//u := initUser(db, rdb)
@@ -11,6 +17,16 @@ func main() {
 	//	ctx.String(http.StatusOK, "hello k8s")
 	//})
 	server.Run("localhost:8080")
+}
+
+func initViper() {
+	cfile := pflag.String("config", "config/config.yaml", "config file path")
+	pflag.Parse()
+	viper.SetConfigFile(*cfile)
+	err := viper.ReadInConfig()
+	if err != nil {
+		panic(err)
+	}
 }
 
 //func initWebServer() *gin.Engine {

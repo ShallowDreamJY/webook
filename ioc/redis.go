@@ -1,1 +1,21 @@
 package ioc
+
+import (
+	"github.com/redis/go-redis/v9"
+	"github.com/spf13/viper"
+)
+
+func InitRedis() redis.Cmdable {
+	type Config struct {
+		addr string `yaml:"addr"`
+	}
+	var cfg Config
+	err := viper.UnmarshalKey("redis", &cfg)
+	if err != nil {
+		panic(err)
+	}
+	redisClient := redis.NewClient(&redis.Options{
+		Addr: cfg.addr,
+	})
+	return redisClient
+}

@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250225 - go.mod文件消失了，重新提交">
-      <change afterPath="$PROJECT_DIR$/internal/repository/cache/code_local.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/dev.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repository/cache/code.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/cache/code.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repository/cache/lua/set_code.lua" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/cache/lua/set_code.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wire.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire_gen.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/config/dev.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/dev.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/config/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/types.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ioc/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ioc/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +79,7 @@
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;20250227-作业，本地缓存实现codeCache&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;20250228-接入配置和日志模块&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/GoWorkspace/webook&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -98,6 +98,7 @@
       <recent name="D:\GoWorkspace\webook\pkg\ratelimit" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GoWorkspace\webook" />
       <recent name="D:\GoWorkspace\webook\ioc" />
     </key>
   </component>
@@ -105,6 +106,7 @@
     <configuration name="go build webook" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="webook" />
       <working_directory value="$PROJECT_DIR$" />
+      <parameters value="--config=config/dev.yaml" />
       <kind value="PACKAGE" />
       <package value="webook" />
       <directory value="$PROJECT_DIR$" />
@@ -165,10 +167,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build webook" />
-        <item itemvalue="Go Build.go build webook" />
-        <item itemvalue="Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover" />
         <item itemvalue="Go Test.TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao" />
+        <item itemvalue="Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover" />
         <item itemvalue="Go Test.TestFailoverSMSService_Send/所有短信服务商全部发送失败 in webook/internal/service/sms/failover" />
+        <item itemvalue="Go Build.go build webook" />
       </list>
     </recent_temporary>
   </component>
@@ -195,7 +197,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="20250227-作业，本地缓存实现codeCache" />
+                        <option value="20250228-接入配置和日志模块" />
                       </list>
                     </value>
                   </entry>
