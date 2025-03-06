@@ -1,6 +1,7 @@
 package ioc
 
 import (
+	"context"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/redis/go-redis/v9"
@@ -9,7 +10,9 @@ import (
 	"webook/internal/web"
 	ijwt "webook/internal/web/jwt"
 	"webook/internal/web/middleware"
+	"webook/pkg/ginx/middlewares/logger"
 	"webook/pkg/ginx/middlewares/ratelimit"
+	logger2 "webook/pkg/logger"
 )
 
 func InitGin(mdls []gin.HandlerFunc, hdl *web.UserHandler,
@@ -22,7 +25,8 @@ func InitGin(mdls []gin.HandlerFunc, hdl *web.UserHandler,
 }
 
 func InitMiddlewares(redisClient redis.Cmdable,
-	jwtHdl ijwt.Handler) []gin.HandlerFunc {
+	jwtHdl ijwt.Handler,
+	l logger2.LoggerV1) []gin.HandlerFunc {
 	return []gin.HandlerFunc{
 		cors.New(cors.Config{
 			//AllowOrigins:     []string{"https://localhost:3000"},
@@ -47,5 +51,8 @@ func InitMiddlewares(redisClient redis.Cmdable,
 			IgnorePaths("/oauth2/wechat/authurl").
 			Build(),
 		ratelimit.NewBuilder(redisClient, time.Second, 100).Build(),
+		logger.NewBuilder(func(ctx context.Context, al *logger.AccessLog) {
+			l.Debug("HTTP请求", logger2.Field{Key: "al", Value: al})
+		}).AllowReqBody().AllowRespBody().Build(),
 	}
 }

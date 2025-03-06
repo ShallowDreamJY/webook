@@ -3,11 +3,13 @@ package main
 import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
+	"go.uber.org/zap"
 )
 
 func main() {
 	//db := initDB()
 	initViper()
+	// initLogger()
 	server := InitWebServer()
 	//rdb := initRedis()
 	//u := initUser(db, rdb)
@@ -27,6 +29,16 @@ func initViper() {
 	if err != nil {
 		panic(err)
 	}
+	zap.L().Info("viper read config success")
+}
+
+func initLogger() {
+	logger, err := zap.NewDevelopment()
+	if err != nil {
+		panic(err)
+	}
+	zap.ReplaceGlobals(logger)
+	zap.L().Info("logger init successfully")
 }
 
 //func initWebServer() *gin.Engine {

@@ -7,6 +7,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 	"webook/internal/domain"
 	"webook/internal/repository"
+	"webook/pkg/logger"
 )
 
 var (
@@ -24,11 +25,14 @@ type UserService interface {
 
 type userService struct {
 	repo repository.UserRepository
+	l    logger.LoggerV1
 }
 
-func NewUserService(repo repository.UserRepository) UserService {
+func NewUserService(repo repository.UserRepository,
+	l logger.LoggerV1) UserService {
 	return &userService{
 		repo: repo,
+		l:    l,
 	}
 }
 
@@ -67,6 +71,7 @@ func (svc *userService) FindOrCreate(ctx *gin.Context, phone string) (domain.Use
 		// nil 和 不是usernotfound（有用户）的走这里
 		return u, err
 	}
+	svc.l.Info("用户未注册", logger.String("phone", phone))
 	// 系统资源不足时，降级处理，则慢路径不走
 	if ctx.Value("降级") == true {
 		return domain.User{}, errors.New("系统降级")

@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250225 - go.mod文件消失了，重新提交">
-      <change afterPath="$PROJECT_DIR$/config/dev.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ioc/log.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/ginx/middlewares/logger/builder.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/logger/fields.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/logger/global_instance.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/logger/types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/logger/zap_logger.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/config/dev.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/dev.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/config/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/types.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ioc/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/web/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/web/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ioc/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ioc/web.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/web.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wire.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire_gen.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +88,7 @@
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;20250228-接入配置和日志模块&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GoWorkspace/webook&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GoWorkspace/geektime-basic-go/webook&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
