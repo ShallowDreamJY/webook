@@ -3,5 +3,13 @@ package dao
 import "gorm.io/gorm"
 
 func InitTable(db *gorm.DB) error {
-	return db.AutoMigrate(&User{})
+	err := db.AutoMigrate(&User{})
+	if err != nil {
+		panic(err)
+	}
+	err = db.AutoMigrate(&AsyncSms{})
+	if err != nil {
+		panic(err)
+	}
+	return err
 }

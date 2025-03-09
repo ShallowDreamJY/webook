@@ -4,23 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250225 - go.mod文件消失了，重新提交">
-      <change afterPath="$PROJECT_DIR$/ioc/log.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/ginx/middlewares/logger/builder.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/logger/fields.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/logger/global_instance.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/logger/types.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/logger/zap_logger.go" afterDir="false" />
+    <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250307 - go.mod文件消失了，">
+      <change afterPath="$PROJECT_DIR$/internal/domain/async.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/async.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/dao/async.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/service/sms/async/service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/web/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/web/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ioc/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/redis.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ioc/web.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/web.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wire.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire_gen.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/dao/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/dao/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/sms/memory/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/sms/memory/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/logger/fields.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logger/fields.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="20250228-接入配置和日志模块" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,7 +78,7 @@
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;20250228-接入配置和日志模块&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/GoWorkspace/geektime-basic-go/webook&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
