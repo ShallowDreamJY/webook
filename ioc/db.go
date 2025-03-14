@@ -23,7 +23,7 @@ func InitDB() *gorm.DB {
 		// 初始化出错，应用不要启动
 		panic(err)
 	}
-	err = dao.InitTable(db)
+	err = dao.InitTables(db)
 	if err != nil {
 		panic(err)
 	}

@@ -4,10 +4,11 @@
 //go:build !wireinject
 // +build !wireinject
 
-package main
+package startup
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/google/wire"
 	"webook/internal/repository"
 	"webook/internal/repository/cache"
 	"webook/internal/repository/dao"
@@ -24,8 +25,8 @@ func InitWebServer() *gin.Engine {
 	handler := jwt.NewRedisJWTHandler(cmdable)
 	loggerV1 := ioc.InitLogger()
 	v := ioc.InitMiddlewares(cmdable, handler, loggerV1)
-	db := ioc.InitDB()
-	userDao := dao.NewUserDao(db)
+	gormDB := ioc.InitDB()
+	userDao := dao.NewUserDao(gormDB)
 	userCache := cache.NewUserCache(cmdable)
 	userRepository := repository.NewUserRepository(userDao, userCache)
 	userService := service.NewUserService(userRepository, loggerV1)
@@ -36,6 +37,24 @@ func InitWebServer() *gin.Engine {
 	userHandler := web.NewUserHandler(userService, codeService, handler)
 	wechatService := ioc.InitOAuth2WechatService()
 	oAuth2WechatHandler := web.NewOAuth2WechatHandler(wechatService, userService, handler)
-	engine := ioc.InitWebServer(v, userHandler, oAuth2WechatHandler)
+	articleDao := dao.NewGORMArticleDao(gormDB)
+	articleRepository := repository.NewArticleRepository(articleDao)
+	articleService := service.NewArticleService(articleRepository)
+	atricleHandler := web.NewArticleHandler(articleService, loggerV1)
+	engine := ioc.InitWebServer(v, userHandler, oAuth2WechatHandler, atricleHandler)
 	return engine
 }
+
+func InitArticleHandler() *web.AtricleHandler {
+	gormDB := InitTestDB()
+	articleDao := dao.NewGORMArticleDao(gormDB)
+	articleRepository := repository.NewArticleRepository(articleDao)
+	articleService := service.NewArticleService(articleRepository)
+	loggerV1 := InitLogger()
+	atricleHandler := web.NewArticleHandler(articleService, loggerV1)
+	return atricleHandler
+}
+
+// wire.go:
+
+var thirdProvider = wire.NewSet(InitRedis, InitTestDB, InitLogger)

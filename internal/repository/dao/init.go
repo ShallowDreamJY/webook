@@ -2,12 +2,8 @@ package dao
 
 import "gorm.io/gorm"
 
-func InitTable(db *gorm.DB) error {
-	err := db.AutoMigrate(&User{})
-	if err != nil {
-		panic(err)
-	}
-	err = db.AutoMigrate(&AsyncSms{})
+func InitTables(db *gorm.DB) error {
+	err := db.AutoMigrate(&User{}, &AsyncSms{}, &Article{})
 	if err != nil {
 		panic(err)
 	}

@@ -1,6 +1,6 @@
 //go:build wireinject
 
-package main
+package startup
 
 import (
 	"github.com/gin-gonic/gin"
@@ -14,30 +14,45 @@ import (
 	"webook/ioc"
 )
 
+var thirdProvider = wire.NewSet(InitRedis, InitTestDB, InitLogger)
+
 func InitWebServer() *gin.Engine {
 	wire.Build(
 		// 最基础的初始化
 		ioc.InitDB, ioc.InitRedis, ioc.InitLogger,
 
 		dao.NewUserDao,
+		dao.NewGORMArticleDao,
 
 		cache.NewUserCache,
 		cache.NewRedisCodeCache,
 
 		repository.NewUserRepository,
 		repository.NewCodeRepository,
+		repository.NewArticleRepository,
 
 		service.NewUserService,
 		service.NewCodeService,
+		service.NewArticleService,
 		ioc.InitSMSService,
 		ioc.InitOAuth2WechatService,
 
 		web.NewUserHandler,
 		web.NewOAuth2WechatHandler,
 		ijwt.NewRedisJWTHandler,
+		web.NewArticleHandler,
 
 		ioc.InitWebServer,
 		ioc.InitMiddlewares,
 	)
 	return new(gin.Engine)
+}
+
+func InitArticleHandler() *web.AtricleHandler {
+	wire.Build(thirdProvider,
+		service.NewArticleService,
+		web.NewArticleHandler,
+		repository.NewArticleRepository,
+		dao.NewGORMArticleDao)
+	return &web.AtricleHandler{}
 }

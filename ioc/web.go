@@ -15,12 +15,14 @@ import (
 	logger2 "webook/pkg/logger"
 )
 
-func InitGin(mdls []gin.HandlerFunc, hdl *web.UserHandler,
-	oauth2WechatHdl *web.OAuth2WechatHandler) *gin.Engine {
+func InitWebServer(mdls []gin.HandlerFunc, hdl *web.UserHandler,
+	oauth2WechatHdl *web.OAuth2WechatHandler,
+	articleHdl *web.AtricleHandler) *gin.Engine {
 	server := gin.Default()
 	server.Use(mdls...)
 	hdl.RegisterUserRoutes(server)
 	oauth2WechatHdl.RegisterRoutes(server)
+	articleHdl.RegisterArticleRoutes(server)
 	return server
 }
 
