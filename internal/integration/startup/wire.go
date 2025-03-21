@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 	"webook/internal/repository"
+	"webook/internal/repository/article"
 	"webook/internal/repository/cache"
 	"webook/internal/repository/dao"
 	"webook/internal/service"
@@ -22,14 +23,14 @@ func InitWebServer() *gin.Engine {
 		ioc.InitDB, ioc.InitRedis, ioc.InitLogger,
 
 		dao.NewUserDao,
-		dao.NewGORMArticleDao,
+		dao.article.NewGORMArticleDao,
 
 		cache.NewUserCache,
 		cache.NewRedisCodeCache,
 
 		repository.NewUserRepository,
 		repository.NewCodeRepository,
-		repository.NewArticleRepository,
+		article.NewArticleRepository,
 
 		service.NewUserService,
 		service.NewCodeService,
@@ -48,11 +49,11 @@ func InitWebServer() *gin.Engine {
 	return new(gin.Engine)
 }
 
-func InitArticleHandler() *web.AtricleHandler {
+func InitArticleHandler() *web.ArticleHandler {
 	wire.Build(thirdProvider,
 		service.NewArticleService,
 		web.NewArticleHandler,
-		repository.NewArticleRepository,
-		dao.NewGORMArticleDao)
-	return &web.AtricleHandler{}
+		article.NewArticleRepository,
+		dao.article.NewGORMArticleDao)
+	return &web.ArticleHandler{}
 }

@@ -61,7 +61,7 @@ func (s *ArticleTestSuite) TestEdit() {
 			},
 
 			after: func(t *testing.T) {
-				var art dao.Article
+				var art dao.article
 				err := s.db.Where("id=?", 1).First(&art).Error
 				assert.NoError(t, err)
 				assert.True(t, art.Ctime > 0)
@@ -82,6 +82,87 @@ func (s *ArticleTestSuite) TestEdit() {
 			wantRes: Result[int64]{
 				Data: 1,
 				Msg:  "OK",
+			},
+		},
+		{
+			name: "修改已有帖子，并保存",
+			before: func(t *testing.T) {
+				err := s.db.Create(dao.article{
+					Id:       2,
+					Title:    "我的标题",
+					Content:  "我的内容",
+					AuthorId: 123,
+					// 跟时间有关的测试不是
+					Ctime: 123,
+					Utime: 234,
+				}).Error
+				assert.NoError(t, err)
+			},
+
+			after: func(t *testing.T) {
+				var art dao.article
+				err := s.db.Where("id=?", 2).First(&art).Error
+				assert.NoError(t, err)
+				assert.True(t, art.Utime > 234)
+				art.Utime = 0
+				// assert.Equal(t, 123, art.AuthorId)
+				assert.Equal(t, dao.article{
+					Id:       2,
+					Title:    "新的标题",
+					Content:  "新的内容",
+					AuthorId: 123,
+					Ctime:    123,
+				}, art)
+			},
+			art: Article{
+				Id:      2,
+				Title:   "新的标题",
+				Content: "新的内容",
+			},
+			wantCode: http.StatusOK,
+			wantRes: Result[int64]{
+				Data: 2,
+				Msg:  "OK",
+			},
+		},
+		{
+			name: "修改别人的帖子",
+			before: func(t *testing.T) {
+				err := s.db.Create(dao.article{
+					Id:       3,
+					Title:    "我的标题",
+					Content:  "我的内容",
+					AuthorId: 789,
+					// 跟时间有关的测试不是
+					Ctime: 123,
+					Utime: 234,
+				}).Error
+				assert.NoError(t, err)
+			},
+
+			after: func(t *testing.T) {
+				var art dao.article
+				err := s.db.Where("id=?", 3).First(&art).Error
+				assert.NoError(t, err)
+				// assert.Equal(t, 123, art.AuthorId)
+				assert.Equal(t, dao.article{
+					Id:       3,
+					Title:    "我的标题",
+					Content:  "我的内容",
+					AuthorId: 789,
+					Ctime:    123,
+					Utime:    234,
+				}, art)
+			},
+			art: Article{
+				Id:      3,
+				Title:   "新的标题",
+				Content: "新的内容",
+			},
+			wantCode: http.StatusOK,
+			wantRes: Result[int64]{
+				Msg:  "系统错误",
+				Code: 5,
 			},
 		},
 	}
@@ -123,6 +204,7 @@ func TestArticle(t *testing.T) {
 }
 
 type Article struct {
+	Id      int64  `json:"id"`
 	Title   string `json:"title"`
 	Content string `json:"content"`
 }

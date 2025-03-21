@@ -5,24 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250307 - go.mod文件消失了，">
-      <change afterPath="$PROJECT_DIR$/internal/domain/article.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/integration/startup/db.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/integration/startup/init.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/integration/startup/log.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/integration/startup/redis.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/integration/startup/wire.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/integration/startup/wire_gen.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repository/article.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repository/dao/article.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/service/atricle.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/article/article_author.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/article/article_reader.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/dao/article/article_author.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repository/dao/article/article_reader.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/service/article_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/web/article_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/article.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/integration/article_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/integration/article_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/integration/startup/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/integration/startup/log.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/integration/startup/wire.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/integration/startup/wire.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/integration/startup/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/integration/startup/wire_gen.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/article/article.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/dao/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/dao/article/article.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/repository/dao/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/dao/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/atricle.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/article.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/web/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/web/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ioc/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ioc/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/log.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ioc/web.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/web.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wire.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/wire_gen.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/logger/zap_logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logger/zap_logger.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,89 +70,81 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "Go Build.go build main.go.executor": "Debug",
-    "Go Build.go build webook.executor": "Debug",
-    "Go Test.TestArticle in webook/internal/integration.executor": "Debug",
-    "Go Test.TestCacheUserRepository_FindById/缓存未命中，DB查找成功 in webook/internal/repository.executor": "Debug",
-    "Go Test.TestEdit in webook/internal/integration (1).executor": "Debug",
-    "Go Test.TestEdit in webook/internal/integration.executor": "Debug",
-    "Go Test.TestEncrypted in webook/internal/service.executor": "Run",
-    "Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover.executor": "Debug",
-    "Go Test.TestFailoverSMSService_Send/所有短信服务商全部发送失败 in webook/internal/service/sms/failover.executor": "Debug",
-    "Go Test.TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao.executor": "Debug",
-    "Go Test.TestUserHandler_SignUp in webook/internal/web (1).executor": "Debug",
-    "Go Test.TestUserHandler_SignUp in webook/internal/web.executor": "Debug",
-    "Go Test.TestUserHandler_SignUp/邮箱冲突 in webook/internal/web.executor": "Debug",
-    "Go Test.Test_userService_Login in webook/internal/service.executor": "Coverage",
-    "Go Test.Test_userService_Login/DB错误 in webook/internal/service.executor": "Run",
-    "Go Test.Test_userService_Login/密码错误 in webook/internal/service.executor": "Run",
-    "Go Test.Test_userService_Login/用户不存在 in webook/internal/service.executor": "Debug",
-    "Go Test.Test_userService_Login/登陆成功 in webook/internal/service.executor": "Coverage",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "20250309-发帖功能实现",
-    "go.import.settings.migrated": "true",
-    "last_opened_file_path": "D:/GoWorkspace/geektime-basic-go/webook",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "go.vgo"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Build.go build main.go.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Build.go build webook.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestArticle in webook/internal/integration.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestArticleHandler_Publish/publish失败 in webook/internal/web.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestArticleHandler_Publish/新建并发表 in webook/internal/web.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestCacheUserRepository_FindById/缓存未命中，DB查找成功 in webook/internal/repository.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestEdit in webook/internal/integration (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestEdit in webook/internal/integration (2).executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestEdit in webook/internal/integration (3).executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestEdit in webook/internal/integration (4).executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestEdit in webook/internal/integration.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestEncrypted in webook/internal/service.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestFailoverSMSService_Send in webook/internal/service/sms/failover.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestFailoverSMSService_Send/所有短信服务商全部发送失败 in webook/internal/service/sms/failover.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestGORMUserDao_Insert/插入成功 in webook/internal/repository/dao.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestUserHandler_SignUp in webook/internal/web (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestUserHandler_SignUp in webook/internal/web.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.TestUserHandler_SignUp/邮箱冲突 in webook/internal/web.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_articleService_Publish in webook/internal/service.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_articleService_Publish/保存到制作库失败 in webook/internal/service.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_articleService_Publish/保存到制作库成功，线上库失败 in webook/internal/service.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_articleService_Publish/保存到制作库成功，重试到线上库失败 in webook/internal/service.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_articleService_Publish/保存到制作库成功，重试到线上库成功 in webook/internal/service.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_articleService_Publish/新建发表成功 in webook/internal/service.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_userService_Login in webook/internal/service.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.Test_userService_Login/DB错误 in webook/internal/service.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.Test_userService_Login/密码错误 in webook/internal/service.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.Test_userService_Login/用户不存在 in webook/internal/service.executor&quot;: &quot;Debug&quot;,
+    &quot;Go Test.Test_userService_Login/登陆成功 in webook/internal/service.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;20250309-发帖功能实现&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GoWorkspace/geektime-basic-go/webook&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;go.vgo&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GoWorkspace\webook\internal\integration\startup" />
       <recent name="D:\GoWorkspace\webook\pkg\ratelimit" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GoWorkspace\webook\internal\repository\dao\article" />
+      <recent name="D:\GoWorkspace\webook\internal\repository\article" />
+      <recent name="D:\GoWorkspace\webook\internal\repository\dao" />
       <recent name="D:\GoWorkspace\webook" />
       <recent name="D:\GoWorkspace\webook\ioc" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestEdit in webook/internal/integration (1)">
-    <configuration name="go build webook" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestEdit in webook/internal/integration">
+    <configuration name="TestArticleHandler_Publish/新建并发表 in webook/internal/web" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="webook" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="webook" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestArticle in webook/internal/integration" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="webook" />
-      <working_directory value="$PROJECT_DIR$/internal/integration" />
+      <working_directory value="$PROJECT_DIR$/internal/web" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="webook/internal/integration" />
+      <package value="webook/internal/web" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestArticle\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestEdit in webook/internal/integration (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="webook" />
-      <working_directory value="$PROJECT_DIR$/internal/integration" />
-      <parameters value=" -testify.m ^TestEdit$" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="webook/internal/integration" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestArticle\E$/^\QTestEdit\E$/^\Q新建帖子-保存成功\E$" />
+      <pattern value="^\QTestArticleHandler_Publish\E$/^\Q新建并发表\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestEdit in webook/internal/integration" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -161,47 +157,93 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestArticle\E$/^\QTestEdit\E$/^\Q新建帖子-保存成功\E$" />
+      <pattern value="^\QTestArticle\E$/^\QTestEdit\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestUserHandler_SignUp in webook/internal/web (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_articleService_Publish in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="webook" />
-      <working_directory value="$PROJECT_DIR$/internal/web" />
+      <working_directory value="$PROJECT_DIR$/internal/service" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="webook/internal/web" />
+      <package value="webook/internal/service" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestUserHandler_SignUp\E$" />
+      <pattern value="^\QTest_articleService_Publish\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestUserHandler_SignUp in webook/internal/web" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_articleService_Publish/保存到制作库成功，线上库失败 in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="webook" />
-      <working_directory value="$PROJECT_DIR$/internal/web" />
+      <working_directory value="$PROJECT_DIR$/internal/service" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="webook/internal/web" />
+      <package value="webook/internal/service" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestUserHandler_SignUp\E$" />
+      <pattern value="^\QTest_articleService_Publish\E$/^\Q保存到制作库成功，线上库失败\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_articleService_Publish/保存到制作库成功，重试到线上库失败 in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/service" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_articleService_Publish\E$/^\Q保存到制作库成功，重试到线上库失败\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_articleService_Publish/保存到制作库失败 in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/service" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_articleService_Publish\E$/^\Q保存到制作库失败\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_articleService_Publish/保存到制作库成功，重试到线上库成功 in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/service" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_articleService_Publish\E$/^\Q保存到制作库成功，重试到线上库成功\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_articleService_Publish/保存到制作库成功，重试到线上库失败 in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/service" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_articleService_Publish\E$/^\Q保存到制作库成功，重试到线上库失败\E$" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Test.TestEdit in webook/internal/integration (1)" />
       <item itemvalue="Go Test.TestEdit in webook/internal/integration" />
-      <item itemvalue="Go Test.TestUserHandler_SignUp in webook/internal/web (1)" />
-      <item itemvalue="Go Test.TestArticle in webook/internal/integration" />
-      <item itemvalue="Go Test.TestUserHandler_SignUp in webook/internal/web" />
+      <item itemvalue="Go Test.TestArticleHandler_Publish/新建并发表 in webook/internal/web" />
+      <item itemvalue="Go Test.Test_articleService_Publish in webook/internal/service" />
+      <item itemvalue="Go Test.Test_articleService_Publish/保存到制作库成功，线上库失败 in webook/internal/service" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestEdit in webook/internal/integration (1)" />
         <item itemvalue="Go Test.TestEdit in webook/internal/integration" />
-        <item itemvalue="Go Test.TestUserHandler_SignUp in webook/internal/web (1)" />
-        <item itemvalue="Go Test.TestUserHandler_SignUp in webook/internal/web" />
-        <item itemvalue="Go Test.TestArticle in webook/internal/integration" />
+        <item itemvalue="Go Test.TestArticleHandler_Publish/新建并发表 in webook/internal/web" />
+        <item itemvalue="Go Test.Test_articleService_Publish/保存到制作库成功，线上库失败 in webook/internal/service" />
+        <item itemvalue="Go Test.Test_articleService_Publish in webook/internal/service" />
       </list>
     </recent_temporary>
   </component>
@@ -218,6 +260,21 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="20250309-发帖功能实现" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -228,7 +285,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="20250228-接入配置和日志模块" />
+                        <option value="20250309-发帖功能实现" />
                       </list>
                     </value>
                   </entry>
@@ -252,6 +309,13 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="DlvErrorBreakpoint" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/webook$TestUserHandler_SignUp_in_webook_internal_web.out" NAME="TestUserHandler_SignUp in webook/internal/web Coverage Results" MODIFIED="1739519881571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
