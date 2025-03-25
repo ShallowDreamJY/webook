@@ -14,6 +14,7 @@ type ArticleRepository interface {
 	Sync(ctx context.Context, art domain.Article) (int64, error)
 	SyncV1(ctx context.Context, art domain.Article) (int64, error)
 	SyncV2(ctx context.Context, art domain.Article) (int64, error)
+	SyncStatus(ctx context.Context, id int64, author int64, status domain.ArticleStatus) error
 }
 
 type CachedArticleRepository struct {
@@ -26,9 +27,12 @@ type CachedArticleRepository struct {
 	db *gorm.DB
 }
 
+func (c *CachedArticleRepository) SyncStatus(ctx context.Context, id int64, author int64, status domain.ArticleStatus) error {
+	return c.dao.SyncStatus(ctx, id, author, uint8(status))
+}
+
 func (c *CachedArticleRepository) Sync(ctx context.Context, art domain.Article) (int64, error) {
-	//TODO implement me
-	panic("implement me")
+	return c.dao.Sync(ctx, c.toEntity(art))
 }
 
 // 确保保存到线上库和制作库同时成功
@@ -99,6 +103,7 @@ func (c *CachedArticleRepository) Update(ctx context.Context, art domain.Article
 		Title:    art.Title,
 		Content:  art.Content,
 		AuthorId: art.Author.Id,
+		Status:   uint8(art.Status),
 	})
 }
 
@@ -107,6 +112,7 @@ func (c *CachedArticleRepository) Create(ctx context.Context, art domain.Article
 		Title:    art.Title,
 		Content:  art.Content,
 		AuthorId: art.Author.Id,
+		Status:   uint8(art.Status),
 	})
 }
 
@@ -116,5 +122,6 @@ func (c *CachedArticleRepository) toEntity(art domain.Article) dao.Article {
 		Title:    art.Title,
 		Content:  art.Content,
 		AuthorId: art.Author.Id,
+		Status:   uint8(art.Status),
 	}
 }

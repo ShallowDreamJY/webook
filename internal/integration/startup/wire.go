@@ -9,6 +9,7 @@ import (
 	"webook/internal/repository/article"
 	"webook/internal/repository/cache"
 	"webook/internal/repository/dao"
+	articledao "webook/internal/repository/dao/article"
 	"webook/internal/service"
 	"webook/internal/web"
 	ijwt "webook/internal/web/jwt"
@@ -23,7 +24,9 @@ func InitWebServer() *gin.Engine {
 		ioc.InitDB, ioc.InitRedis, ioc.InitLogger,
 
 		dao.NewUserDao,
-		dao.article.NewGORMArticleDao,
+		articledao.NewReaderDAO,
+		articledao.NewAuthorDAO,
+		articledao.NewGORMArticleDao,
 
 		cache.NewUserCache,
 		cache.NewRedisCodeCache,
@@ -54,6 +57,8 @@ func InitArticleHandler() *web.ArticleHandler {
 		service.NewArticleService,
 		web.NewArticleHandler,
 		article.NewArticleRepository,
-		dao.article.NewGORMArticleDao)
+		articledao.NewGORMArticleDao,
+		articledao.NewReaderDAO,
+		articledao.NewAuthorDAO)
 	return &web.ArticleHandler{}
 }

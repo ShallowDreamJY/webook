@@ -11,8 +11,9 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"webook/internal/domain"
 	"webook/internal/integration/startup"
-	"webook/internal/repository/dao"
+	"webook/internal/repository/dao/article"
 	ijwt "webook/internal/web/jwt"
 )
 
@@ -61,18 +62,20 @@ func (s *ArticleTestSuite) TestEdit() {
 			},
 
 			after: func(t *testing.T) {
-				var art dao.article
+				var art article.Article
 				err := s.db.Where("id=?", 1).First(&art).Error
 				assert.NoError(t, err)
 				assert.True(t, art.Ctime > 0)
 				assert.True(t, art.Utime > 0)
-				// assert.Equal(t, 123, art.AuthorId)
-				//assert.Equal(t, dao.Article{
-				//	Id:       1,
-				//	Title:    "my title",
-				//	Content:  "my content",
-				//	AuthorId: 123,
-				//}, art)
+				art.Utime = 0
+				art.Ctime = 0
+				assert.Equal(t, article.Article{
+					Id:       1,
+					Title:    "my title",
+					Content:  "my content",
+					AuthorId: 123,
+					Status:   domain.ArticleStatusUnpublished.ToUnit8(),
+				}, art)
 			},
 			art: Article{
 				Title:   "my title",
@@ -87,7 +90,7 @@ func (s *ArticleTestSuite) TestEdit() {
 		{
 			name: "修改已有帖子，并保存",
 			before: func(t *testing.T) {
-				err := s.db.Create(dao.article{
+				err := s.db.Create(article.Article{
 					Id:       2,
 					Title:    "我的标题",
 					Content:  "我的内容",
@@ -100,16 +103,17 @@ func (s *ArticleTestSuite) TestEdit() {
 			},
 
 			after: func(t *testing.T) {
-				var art dao.article
+				var art article.Article
 				err := s.db.Where("id=?", 2).First(&art).Error
 				assert.NoError(t, err)
 				assert.True(t, art.Utime > 234)
 				art.Utime = 0
 				// assert.Equal(t, 123, art.AuthorId)
-				assert.Equal(t, dao.article{
+				assert.Equal(t, article.Article{
 					Id:       2,
 					Title:    "新的标题",
 					Content:  "新的内容",
+					Status:   domain.ArticleStatusPublished.ToUnit8(),
 					AuthorId: 123,
 					Ctime:    123,
 				}, art)
@@ -128,7 +132,7 @@ func (s *ArticleTestSuite) TestEdit() {
 		{
 			name: "修改别人的帖子",
 			before: func(t *testing.T) {
-				err := s.db.Create(dao.article{
+				err := s.db.Create(article.Article{
 					Id:       3,
 					Title:    "我的标题",
 					Content:  "我的内容",
@@ -136,16 +140,18 @@ func (s *ArticleTestSuite) TestEdit() {
 					// 跟时间有关的测试不是
 					Ctime: 123,
 					Utime: 234,
+					// 验证状态是否改变
+					Status: domain.ArticleStatusPublished.ToUnit8(),
 				}).Error
 				assert.NoError(t, err)
 			},
 
 			after: func(t *testing.T) {
-				var art dao.article
+				var art article.Article
 				err := s.db.Where("id=?", 3).First(&art).Error
 				assert.NoError(t, err)
 				// assert.Equal(t, 123, art.AuthorId)
-				assert.Equal(t, dao.article{
+				assert.Equal(t, article.Article{
 					Id:       3,
 					Title:    "我的标题",
 					Content:  "我的内容",

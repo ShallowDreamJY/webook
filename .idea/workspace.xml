@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83eecae0-8b7f-4729-83e1-b80baea71e99" name="Changes" comment="20250307 - go.mod文件消失了，">
-      <change afterPath="$PROJECT_DIR$/internal/repository/article/article_author.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repository/article/article_reader.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repository/dao/article/article_author.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repository/dao/article/article_reader.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/service/article_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/web/article_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/article.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/integration/article_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/integration/article_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/integration/startup/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/integration/startup/log.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/integration/startup/wire.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/integration/startup/wire.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/integration/startup/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/integration/startup/wire_gen.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repository/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/article/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repository/dao/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/dao/article/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repository/dao/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/dao/init.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/atricle.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/article/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/article/article.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/dao/article/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/dao/article/article.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/dao/article/article_author.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/dao/article/article_author.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/dao/article/article_reader.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/dao/article/article_reader.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/article.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/web/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/web/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ioc/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/log.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ioc/web.go" beforeDir="false" afterPath="$PROJECT_DIR$/ioc/web.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/logger/zap_logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logger/zap_logger.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +123,7 @@
       <recent name="D:\GoWorkspace\webook\ioc" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestEdit in webook/internal/integration">
+  <component name="RunManager" selected="Go Test.TestEdit in webook/internal/integration (2)">
     <configuration name="TestArticleHandler_Publish/新建并发表 in webook/internal/web" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="webook" />
       <working_directory value="$PROJECT_DIR$/internal/web" />
@@ -145,6 +134,32 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <pattern value="^\QTestArticleHandler_Publish\E$/^\Q新建并发表\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestEdit in webook/internal/integration (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/integration" />
+      <parameters value=" -testify.m ^TestEdit$" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/integration" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestArticle\E$/^\QTestEdit\E$/^\Q新建帖子-保存成功\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestEdit in webook/internal/integration (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="webook" />
+      <working_directory value="$PROJECT_DIR$/internal/integration" />
+      <parameters value=" -testify.m ^TestEdit$" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="webook/internal/integration" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestArticle\E$/^\QTestEdit\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestEdit in webook/internal/integration" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -158,18 +173,6 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <pattern value="^\QTestArticle\E$/^\QTestEdit\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_articleService_Publish in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="webook" />
-      <working_directory value="$PROJECT_DIR$/internal/service" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="webook/internal/service" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTest_articleService_Publish\E$" />
       <method v="2" />
     </configuration>
     <configuration name="Test_articleService_Publish/保存到制作库成功，线上库失败 in webook/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -233,17 +236,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Go Test.TestEdit in webook/internal/integration (1)" />
+      <item itemvalue="Go Test.TestEdit in webook/internal/integration (2)" />
       <item itemvalue="Go Test.TestEdit in webook/internal/integration" />
       <item itemvalue="Go Test.TestArticleHandler_Publish/新建并发表 in webook/internal/web" />
-      <item itemvalue="Go Test.Test_articleService_Publish in webook/internal/service" />
       <item itemvalue="Go Test.Test_articleService_Publish/保存到制作库成功，线上库失败 in webook/internal/service" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestEdit in webook/internal/integration (2)" />
+        <item itemvalue="Go Test.TestEdit in webook/internal/integration (1)" />
         <item itemvalue="Go Test.TestEdit in webook/internal/integration" />
         <item itemvalue="Go Test.TestArticleHandler_Publish/新建并发表 in webook/internal/web" />
         <item itemvalue="Go Test.Test_articleService_Publish/保存到制作库成功，线上库失败 in webook/internal/service" />
-        <item itemvalue="Go Test.Test_articleService_Publish in webook/internal/service" />
       </list>
     </recent_temporary>
   </component>
